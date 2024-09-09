@@ -1,3 +1,4 @@
+
 // app.js
 import CONFIG from './config.js';
 import { db } from './firebase-config.js';
