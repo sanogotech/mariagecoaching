@@ -1,18 +1,20 @@
 // login.js
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
-const auth = getAuth();
-
-document.getElementById('login-form').addEventListener('submit', async (e) => {
+document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById('email').value;
+
+    const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = 'dashboard.html';
-    } catch (error) {
-        console.error("Erreur de connexion : ", error);
+    // Identifiants en dur pour exemple
+    const validCredentials = {
+        'user': 'userpass',
+        'admin': 'adminpass'
+    };
+
+    if (validCredentials[username] === password) {
+        localStorage.setItem('loggedInUser', username);
+        window.location.href = 'evaluation.html'; // Redirige vers la page d'évaluation
+    } else {
+        document.getElementById('login-error').style.display = 'block';
     }
 });
-
