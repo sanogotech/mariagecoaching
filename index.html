@@ -3,32 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching au Mariage</title>
+    <title>Coaching au Mariage - Connexion</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="Logo" class="logo">
-        <h1>Coaching au Mariage</h1>
-        <nav>
-            <a href="login.html">Se connecter</a>
-            <a href="dashboard.html">Tableau de bord</a>
-        </nav>
-    </header>
-    <main>
-        <section id="questionnaire">
-            <h2>Répondez aux questions suivantes pour évaluer votre préparation au mariage</h2>
-            <form id="form">
-                <!-- Les questions seront ajoutées ici via JavaScript -->
-                <button type="submit">Soumettre</button>
-            </form>
-        </section>
-    </main>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="app.js"></script>
+    <div class="login-container">
+        <h1>Connexion</h1>
+        <form id="login-form">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" required>
+            
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit">Se connecter</button>
+            <p id="login-error" style="color: red; display: none;">Identifiant ou mot de passe incorrect</p>
+        </form>
+    </div>
+    <script src="login.js"></script>
 </body>
 </html>
-
