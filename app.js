@@ -1,49 +1,30 @@
 // app.js
+import CONFIG from './config.js';
 import { db } from './firebase-config.js';
-import { addDoc, collection } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
-async function loadQuestions() {
-    const response = await fetch('questionmariage.json');
-    const data = await response.json();
-    const formElement = document.getElementById('form');
-
-    data.categories.forEach(category => {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.classList.add('category');
-        const categoryTitle = document.createElement('h3');
-        categoryTitle.textContent = category.name;
-        categoryDiv.appendChild(categoryTitle);
-
-        category.questions.forEach(q => {
-            const label = document.createElement('label');
-            label.textContent = q.question;
-            const select = document.createElement('select');
-            select.name = q.id;
-            q.options.forEach(option => {
-                const optionElement = document.createElement('option');
-                optionElement.value = option;
-                optionElement.textContent = option;
-                select.appendChild(optionElement);
-            });
-            categoryDiv.appendChild(label);
-            categoryDiv.appendChild(select);
-        });
-
-        formElement.appendChild(categoryDiv);
-    });
+// Fonction pour stocker les réponses
+async function storeResponses(answers, score, recommendation) {
+    if (CONFIG.storage === 'firebase') {
+        await addDoc(collection(db, 'responses'), { answers, score, recommendation });
+    } else if (CONFIG.storage === 'localStorage') {
+        const storedResponses = JSON.parse(localStorage.getItem('responses')) || [];
+        storedResponses.push({ answers, score, recommendation });
+        localStorage.setItem('responses', JSON.stringify(storedResponses));
+    }
 }
 
-function calculateScore(answers, questions) {
+function calculateScore(answers, categories) {
     let totalScore = 0;
     let maxScore = 0;
 
-    questions.forEach(category => {
+    categories.forEach(category => {
         category.questions.forEach(question => {
             const answer = answers[question.id];
-            const optionIndex = question.options.indexOf(answer);
-            const score = (optionIndex + 1) * question.weight;
-            totalScore += score;
-            maxScore += question.weight * question.options.length;
+            if (answer) {
+                totalScore += question.options[answer].weight;
+                maxScore += question.options.reduce((sum, opt) => sum + opt.weight, 0);
+            }
         });
     });
 
@@ -67,7 +48,7 @@ function generateRecommendations(score, maxScore) {
 
 document.getElementById('form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(e.target);
     const answers = {};
     formData.forEach((value, key) => {
@@ -76,12 +57,11 @@ document.getElementById('form').addEventListener('submit', async (e) => {
 
     const response = await fetch('questionmariage.json');
     const data = await response.json();
-    
+
     const { totalScore, maxScore } = calculateScore(answers, data.categories);
     const recommendation = generateRecommendations(totalScore, maxScore);
 
-    await addDoc(collection(db, 'responses'), { answers, totalScore, recommendation });
+    await storeResponses(answers, totalScore, recommendation);
 
     alert(`Votre score est ${totalScore}. Recommandations: ${recommendation}`);
 });
-
