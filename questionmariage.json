@@ -17,7 +17,7 @@
                     "options": ["Jamais", "Rarement", "Parfois", "Souvent", "Toujours"],
                     "weight": 3
                 }
-                // Ajoutez plus de questions ici
+                
             ]
         },
         {
