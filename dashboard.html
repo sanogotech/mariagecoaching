@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Coaching au Mariage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <h1>Tableau de Bord</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="login.html">Se connecter</a>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h2>Résultats des évaluations</h2>
+            <button id="export-pdf">Exporter en PDF</button>
+            <div id="results">
+                <!-- Les résultats des évaluations seront ajoutés ici via JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="pdf-generator.js"></script>
+</body>
+</html>
 
