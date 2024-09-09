@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching au Mariage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <h1>Coaching au Mariage</h1>
+        <nav>
+            <a href="login.html">Se connecter</a>
+            <a href="dashboard.html">Tableau de bord</a>
+        </nav>
+    </header>
+    <main>
+        <section id="questionnaire">
+            <h2>Répondez aux questions suivantes pour évaluer votre préparation au mariage</h2>
+            <form id="form">
+                <!-- Les questions seront ajoutées ici via JavaScript -->
+                <button type="submit">Soumettre</button>
+            </form>
+        </section>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
 
