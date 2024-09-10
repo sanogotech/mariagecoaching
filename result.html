@@ -1,26 +1,25 @@
-<!-- form.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire d'Évaluation</title>
+    <title>Résultats</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <nav>
+	
+		  <nav>
             <ul>
                 <li><a href="form.html">Évaluation</a></li>
                 <li><a href="dashboard.html">Tableau de bord</a></li>
                 <li><button id="logout-btn">Déconnexion</button></li>
             </ul>
         </nav>
-        <h1>Évaluation de Préparation au Mariage</h1>
-        <form id="evaluation-form">
-            <div id="questions-container"></div>
-            <button type="submit">Soumettre</button>
-        </form>
+        <h1>Résultats de l'Évaluation</h1>
+        <p id="result-message"></p>
+        <p id="recommendation"></p>
+		
     </div>
     <script src="app.js"></script>
 </body>

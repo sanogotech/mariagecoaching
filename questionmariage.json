@@ -5,35 +5,22 @@
             "questions": [
                 {
                     "id": "q1",
-                    "question": "Comment évaluez-vous votre communication avec votre partenaire?",
-                    "type": "scale",
-                    "options": ["Très insatisfaisant", "Insatisfaisant", "Neutre", "Satisfaisant", "Très satisfaisant"],
-                    "weight": 2
+                    "text": "Communiquez-vous ouvertement avec votre partenaire?",
+                    "options": [
+                        { "text": "Toujours", "weight": 5 },
+                        { "text": "Parfois", "weight": 3 },
+                        { "text": "Rarement", "weight": 1 }
+                    ]
                 },
                 {
                     "id": "q2",
-                    "question": "À quelle fréquence avez-vous des discussions profondes?",
-                    "type": "scale",
-                    "options": ["Jamais", "Rarement", "Parfois", "Souvent", "Toujours"],
-                    "weight": 3
+                    "text": "Êtes-vous à l'aise pour parler de vos sentiments?",
+                    "options": [
+                        { "text": "Oui", "weight": 5 },
+                        { "text": "Non", "weight": 1 }
+                    ]
                 }
-                
-            ]
-        },
-        {
-            "name": "Finances",
-            "questions": [
-                {
-                    "id": "q3",
-                    "question": "Êtes-vous d'accord sur vos objectifs financiers?",
-                    "type": "scale",
-                    "options": ["Pas du tout", "Un peu", "Modérément", "Beaucoup", "Entièrement"],
-                    "weight": 3
-                }
-                // Ajoutez plus de questions ici
             ]
         }
-        // Ajoutez plus de catégories ici
     ]
 }
-
